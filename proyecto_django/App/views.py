@@ -18,7 +18,7 @@ def ver_sucursales(request):
 from App.models import socios, actividades, sucursales
 from App.forms import SociosForm
 from App.forms import ActividadesForm
-from App.forms import BuscaSocioForm, SucursalesForm ,BuscarActividades
+from App.forms import BuscaSocioForm, SucursalesForm ,BuscarActividades, BuscarSucursales
 
 def socios_formulario(request):
     if request.method == 'POST':
@@ -122,3 +122,24 @@ def buscar_actividades(request):
         mi_formulario = BuscarActividades()
 
     return render(request, "App/buscar_actividades.html", {"mi_formulario": mi_formulario})
+
+
+def buscar_sucursales(request):
+    if request.method == "POST":
+        mi_formulario = BuscarSucursales(request.POST)  # Aquí recibimos los datos del formulario
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+
+            # Buscar socios según los datos ingresados en el formulario
+            sucursales_filtrados = sucursales.objects.all()
+
+            if informacion.get("nombre"):
+                sucursales_filtrados = sucursales_filtrados.filter(nombre__icontains=informacion["nombre"])
+
+
+            return render(request, "App/mostrar_sucursales.html", {"sucursales": sucursales_filtrados})
+    else:
+        mi_formulario = BuscarSucursales()
+
+    return render(request, "App/buscar_sucursales.html", {"mi_formulario": mi_formulario})

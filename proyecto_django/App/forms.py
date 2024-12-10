@@ -30,6 +30,10 @@ class SucursalesForm(forms.Form):
 class BuscarActividades(forms.Form):
     nombre= forms.CharField()
 
+
+class BuscarSucursales(forms.Form):
+    nombre= forms.CharField()
+
     
 
 
