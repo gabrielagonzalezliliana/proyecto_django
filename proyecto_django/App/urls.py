@@ -5,13 +5,14 @@ from App import views
 urlpatterns = [
     path("", views.inicio, name = "inicio"),
     path("socios/", views.ver_socios, name = "socios"),
-    path("actividades/", views.actividades, name = "actividades"),
-    path("sucursales/", views.sucursales, name = "sucursales")
+    path("actividades/", views.ver_actividades, name = "actividades"),
+    path("sucursales/", views.ver_sucursales, name = "sucursales")
 ]
 
 forms_api = [
     path('socios-formulario/', views.socios_formulario, name='socios_formulario'),
-    path('buscar-socio/', views.buscar_socio, name="buscar_socio")
+    path('buscar-socio/', views.buscar_socio, name="buscar_socio"),
+    path( 'actividades-formulario/', views.actividades_formulario, name='actividades_formulario'),
 ]
 
 urlpatterns += forms_api

@@ -1,5 +1,5 @@
 from django import forms
-from .models import socios
+from .models import socios,actividades
 
 class SociosForm (forms.Form):
     nombre = forms.CharField()
@@ -13,6 +13,14 @@ class SociosForm (forms.Form):
 class BuscaSocioForm(forms.Form):
     nombre = forms.CharField(required=False, label="Nombre", max_length=100)
     apellido = forms.CharField(required=False, label="Apellido", max_length=100)
+
+
+class ActividadesForm(forms.Form):
+    nombre = forms.CharField()
+    horario = forms.TimeField()
+    profesor = forms.CharField()
+    descripcion = forms.CharField(widget= forms.Textarea)
+
     
 
 

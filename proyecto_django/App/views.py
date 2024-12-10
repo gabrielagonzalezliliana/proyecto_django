@@ -9,14 +9,15 @@ def inicio(request):
 def ver_socios(request):
     return render(request,"App/socios.html")
 
-def actividades(request):
+def ver_actividades(request):
     return render(request,"App/actividades.html")
 
-def sucursales(request):
+def ver_sucursales(request):
     return render(request,"App/sucursales.html")
 
-from App.models import socios
+from App.models import socios, actividades
 from App.forms import SociosForm
+from App.forms import ActividadesForm
 from App.forms import BuscaSocioForm
 
 def socios_formulario(request):
@@ -60,3 +61,23 @@ def buscar_socio(request):
     return render(request, "App/buscar_socio.html", {"mi_formulario": mi_formulario})
 
 
+def actividades_formulario(request):
+    if request.method == 'POST':
+        form = ActividadesForm(request.POST)
+
+        if form.is_valid():
+            informacion = form.cleaned_data
+
+            nueva_actividad = actividades(
+                nombre=informacion["nombre"], 
+                horario=informacion["horario"], 
+                profesor=informacion["profesor"], 
+                descripcion=informacion["descripcion"]
+                )
+            nueva_actividad.save()
+
+            return render(request, "App/inicio.html")
+    else:
+        form= ActividadesForm()
+
+    return render(request, 'App/actividades_formulario.html', {'form': form})
