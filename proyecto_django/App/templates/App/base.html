@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{% static 'App/css/bootstrap.min.css' %}" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'App/css/style.css' %}">
+
 </head>
 <body>
 <div class="container-fluid pl-0 pr-0 bg-img clearfix parallax-window2" data-parallax="scroll" data-image-src="{% static 'App/images/banner2.jpg' %}">
@@ -34,8 +35,26 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"> <a class="nav-link" href="{% url 'inicio' %}">Inicio</a> </li>
-          <li class="nav-item"> <a class="nav-link" href=" {% url 'socios' %}">Socios</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'actividades' %}">Actividades</a> </li>
+
+
+
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none; color: white;">
+              Socios
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="display: none; background-color: #343a40; border: 1px solid #444;">
+              <a class="dropdown-item" href="{% url 'socios' %}" style="color: white;">Eventos para socios</a>
+              <a class="dropdown-item" href="{% url 'buscar_socio' %}" style="color: white;">Buscar</a>
+              <a class="dropdown-item" href="{% url 'socios_formulario' %}" style="color: white;">Agregar</a>
+            </div>
+          </div>
+          
+          
+
+
+
+        
+          <li class="nav-item"> <a class="nav-link" href="{% url 'actividades'%}">Actividades</a> </li>
           <li class="nav-item"> <a class="nav-link" href="{% url 'sucursales' %}">Sucursales</a> </li>
         </ul>
        
@@ -113,6 +132,34 @@
 <script src="js/parallax.js"></script>
 <script src="js/wow.js"></script>
 <script src="js/main.js"></script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownButton = document.getElementById("dropdownMenuButton");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+
+    dropdownButton.addEventListener("click", function () {
+      // Cambiar entre mostrar y ocultar el menú
+      if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
+        dropdownMenu.style.display = "block";
+      } else {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Cerrar el menú si haces clic fuera de él
+    document.addEventListener("click", function (event) {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+
+
 
 </body>
 </html>
