@@ -13,7 +13,9 @@ forms_api = [
     path('socios-formulario/', views.socios_formulario, name='socios_formulario'),
     path('buscar-socio/', views.buscar_socio, name="buscar_socio"),
     path('actividades-formulario/', views.actividades_formulario, name='actividades_formulario'),
-    path('sucursales-formulario/', views.sucursales_formulario, name= 'sucursales_formulario')
+    path('sucursales-formulario/', views.sucursales_formulario, name= 'sucursales_formulario'),
+    path('buscar-actividades/', views.buscar_actividades, name="buscar_actividades"),
+
 ]
 
 urlpatterns += forms_api
