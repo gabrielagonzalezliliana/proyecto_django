@@ -15,10 +15,10 @@ def ver_actividades(request):
 def ver_sucursales(request):
     return render(request,"App/sucursales.html")
 
-from App.models import socios, actividades
+from App.models import socios, actividades, sucursales
 from App.forms import SociosForm
 from App.forms import ActividadesForm
-from App.forms import BuscaSocioForm
+from App.forms import BuscaSocioForm, SucursalesForm
 
 def socios_formulario(request):
     if request.method == 'POST':
@@ -81,3 +81,23 @@ def actividades_formulario(request):
         form= ActividadesForm()
 
     return render(request, 'App/actividades_formulario.html', {'form': form})
+
+
+def sucursales_formulario(request):
+    if request.method == 'POST':
+        form = SucursalesForm(request.POST)
+
+        if form.is_valid():
+            informacion = form.cleaned_data
+
+            nueva_sucursal = sucursales(
+                nombre=informacion["nombre"], 
+                direccion=informacion["direccion"], 
+                )
+            nueva_sucursal.save()
+
+            return render(request, "App/inicio.html")
+    else:
+        form= SucursalesForm()
+
+    return render(request, 'App/sucursales_formulario.html', {'form': form})

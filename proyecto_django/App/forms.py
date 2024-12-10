@@ -21,6 +21,11 @@ class ActividadesForm(forms.Form):
     profesor = forms.CharField()
     descripcion = forms.CharField(widget= forms.Textarea)
 
+
+class SucursalesForm(forms.Form):
+    nombre = forms.CharField()
+    direccion = forms.CharField()
+
     
 
 
