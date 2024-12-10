@@ -1,0 +1,16 @@
+{% extends 'App/base.html' %}
+
+{% block title %} Resultados de la Búsqueda {% endblock title %}
+
+{% block main %}
+    <h2>Resultados de la Búsqueda</h2>
+    {% if socios %}
+        <ul>
+            {% for socio in socios %}
+                <li>{{ socio.nombre }} {{ socio.apellido }} | DNI: {{ socio.dni }} | Email: {{ socio.email }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+{% endblock main %}
