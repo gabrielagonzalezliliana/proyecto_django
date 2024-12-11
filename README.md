@@ -11,15 +11,21 @@ Ver eventos exclusivos para socios.
 Agregar un socio y su información.
 Buscar un socio por nombre o dni.
 
+Ejemplo busqueda de socios ya inscriptos: ingresar alguno de los siguientes nombres: Ruben, Gabriela, Marina, Adriana, Esteban.
+
 - Actividades
 Ver las actividades disponibles en el gimnasio.
 Buscar actividades por nombre.
 Agregar actividades para el gimnasio.
 
+Ejemplo de busqueda de actividades: ingresar alguno de los siguientes nombres: zumba, crosfitt, flexibilidad, funcional. boxeo, pilates, hiit
+
 - Sucursales
 Ver las sucursales del gimnasio por nombre y dirección.
 Buscar sucursales por nombre.
 Agregar nuevas sucursales.
+
+Ejemplo de busqueda de sucursales: nueva cordoba, cerro, general paz, barrio jardin
 
 ## Gestión de Usuarios
 - Creación de un superusuario para la gestión de la plataforma.
