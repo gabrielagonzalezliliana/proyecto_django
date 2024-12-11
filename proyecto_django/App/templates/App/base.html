@@ -35,27 +35,58 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"> <a class="nav-link" href="{% url 'inicio' %}">Inicio</a> </li>
-
-
-
+        
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none; color: white;">
               Socios
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="display: none; background-color: #343a40; border: 1px solid #444;">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu" style="display: none; background-color: #343a40; border: 1px solid #444;">
               <a class="dropdown-item" href="{% url 'socios' %}" style="color: white;">Eventos para socios</a>
               <a class="dropdown-item" href="{% url 'buscar_socio' %}" style="color: white;">Buscar</a>
               <a class="dropdown-item" href="{% url 'socios_formulario' %}" style="color: white;">Agregar</a>
             </div>
           </div>
-          
+
+
           
 
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonActividades" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none; color: white;">
+              Actividades
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu" style="display: none; background-color: #343a40; border: 1px solid #444;">
+              <a class="dropdown-item" href="{% url 'actividades' %}" style="color: white;">Actividades</a>
+              <a class="dropdown-item" href="{% url 'buscar_actividades' %}" style="color: white;">Buscar</a>
+              <a class="dropdown-item" href="{% url 'actividades_formulario' %}" style="color: white;">Agregar</a>
+            </div>
+          </div>
+
+          
+
+
+
+
+          
+
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuSucursales" aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: none; color: white;">
+              Sucursales
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu" style="display: none; background-color: #343a40; border: 1px solid #444;">
+              <a class="dropdown-item" href="{% url 'sucursales' %}" style="color: white;">Sucursales</a>
+              <a class="dropdown-item" href="{% url 'buscar_sucursales' %}" style="color: white;">Buscar</a>
+              <a class="dropdown-item" href="{% url 'sucursales_formulario' %}" style="color: white;">Agregar</a>
+            </div>
+          </div>
 
 
         
-          <li class="nav-item"> <a class="nav-link" href="{% url 'actividades'%}">Actividades</a> </li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'sucursales' %}">Sucursales</a> </li>
+
+          
+
+          
+          
+
         </ul>
        
       </div>
@@ -134,6 +165,8 @@
 <script src="js/main.js"></script>
 
 
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const dropdownButton = document.getElementById("dropdownMenuButton");
@@ -156,6 +189,57 @@
     });
   });
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownButton = document.getElementById("dropdownMenuButtonActividades");
+    const dropdownMenu = document.querySelector("#dropdownMenuButtonActividades + .dropdown-menu");
+
+    dropdownButton.addEventListener("click", function () {
+      // Cambiar entre mostrar y ocultar el menú
+      if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
+        dropdownMenu.style.display = "block";
+      } else {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Cerrar el menú si haces clic fuera de él
+    document.addEventListener("click", function (event) {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownButton = document.getElementById("dropdownMenuSucursales");
+    const dropdownMenu = document.querySelector("#dropdownMenuSucursales + .dropdown-menu");
+
+    dropdownButton.addEventListener("click", function () {
+      // Cambiar entre mostrar y ocultar el menú
+      if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
+        dropdownMenu.style.display = "block";
+      } else {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Cerrar el menú si haces clic fuera de él
+    document.addEventListener("click", function (event) {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+
+ 
+
 
 
 
